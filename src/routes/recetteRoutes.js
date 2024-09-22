@@ -1,20 +1,15 @@
-const express = require("express");
+import express from "express";
+import { getAllRecipes, getRecipeById, createRecipe, updateRecipe, deleteRecipe,} from "../controllers/recetteController.js";
+import { validateRecette } from '../validators/recetteValidator.js'; // Utilisez import au lieu de require
+
+
 const router = express.Router();
-const recetteController = require("../controllers/recetteController"); // Importer le contrôleur
 
-// Route pour récupérer toutes les recettes (GET)
-router.get("/", recetteController.getAllRecettes);
+router.get("/recipe", getAllRecipes);
+router.get("/recipe/:id", getRecipeById);
+router.post("/recipe", validateRecette, createRecipe);
+router.put("/recipe/:id", validateRecette,  updateRecipe);
+router.delete("/recipe/:id", deleteRecipe);
 
-// Route pour récupérer une recette par ID (GET)
-router.get("/:id", recetteController.getRecetteById);
 
-// Route pour créer une nouvelle recette (POST)
-router.post("/", recetteController.createRecette);
-
-// Route pour mettre à jour une recette par ID (PUT)
-router.put("/:id", recetteController.updateRecette);
-
-// Route pour supprimer une recette par ID (DELETE)
-router.delete("/:id", recetteController.deleteRecette);
-
-module.exports = router;
+export default router;
