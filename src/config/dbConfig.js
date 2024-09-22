@@ -1,18 +1,16 @@
-const mysql = require("mysql2");
 
-const db = mysql.createConnection({
-  host: "localhost",
-  user: "root",
-  password: "",
-  database: "recette_api",
+import mysql from'mysql2/promise';
+
+// Configuration de la connexion à la base de données MySQL
+const connPool = mysql.createPool({
+  host: 'localhost',       // Remplace par ton host si nécessaire
+  user: 'root',            // Remplace par ton utilisateur
+  password: 'Nd49523097',            // Remplace par ton mot de passe
+  database: 'recette_api',   // Remplace par le nom de ta base de données
+  port:3308
 });
 
-db.connect((err) => {
-  if (err) {
-    console.error("Erreur de connexion à la base de données :", err);
-    return;
-  }
-  console.log("Connecté à la base de données MySQL.");
-});
-
-module.exports = db;
+connPool.getConnection().then(() => {
+  console.log("CONNECTED")
+})
+export default connPool;
