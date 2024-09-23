@@ -1,67 +1,65 @@
-import db from "../config/dbConfig.js";
+import {
+  getAllRecettes,
+  getRecetteById,
+  createRecette,
+  updateRecette,
+  deleteRecette,
+} from "../models/recetteModel.js";
 
-export const getAllRecipes = async (req, res) => {
+export const getAllRecettesController = async (req, res) => {
   try {
-    const [results] = await db.query("SELECT * FROM recettes");
+    const results = await getAllRecettes();
     res.json(results);
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
 };
 
-export const getRecipeById = async (req, res, _next) => {
+export const getRecetteByIdController = async (req, res) => {
   const { id } = req.params;
   try {
-    const [results] = await db.query("SELECT * FROM recettes WHERE id = ?", [
-      id,
-    ]);
-    if (results.length === 0) {
-      return res.status(404).json({ message: "Recette non trouvé" });
+    const recette = await getRecetteById(id);
+    if (!recette) {
+      return res.status(404).json({ message: "Recette non trouvée" });
     }
-    res.json(results[0]);
+    res.json(recette);
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
 };
 
-export const createRecipe = async (req, res) => {
+export const createRecetteController = async (req, res) => {
   const { titre, ingredient, type } = req.body;
   try {
-    const [result] = await db.query(
-      "INSERT INTO recettes (titre, ingredient, type) VALUES (?, ?, ?)",
-      [titre, ingredient, type]
-    );
+    await createRecette(titre, ingredient, type);
     res.status(201).json({ message: "Recette ajoutée avec succès" });
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
 };
 
-export const updateRecipe = async (req, res) => {
+export const updateRecetteController = async (req, res) => {
   const { id } = req.params;
   const { titre, ingredient, type } = req.body;
   try {
-    const [result] = await db.query(
-      "UPDATE recettes SET titre = ?, ingredient = ?, type = ? WHERE id = ?",
-      [titre, ingredient, type, id]
-    );
+    const result = await updateRecette(id, titre, ingredient, type);
     if (result.affectedRows === 0) {
-      return res.status(404).json({ message: "Recette non trouvé" });
+      return res.status(404).json({ message: "Recette non trouvée" });
     }
-    res.json({ message: "Mise ajour reussi avec succes" });
+    res.json({ message: "Mise à jour réussie avec succès" });
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
 };
 
-export const deleteRecipe = async (req, res) => {
+export const deleteRecetteController = async (req, res) => {
   const { id } = req.params;
   try {
-    const [result] = await db.query("DELETE FROM recettes WHERE id = ?", [id]);
+    const result = await deleteRecette(id);
     if (result.affectedRows === 0) {
-      return res.status(404).json({ message: "Recette non trouvé" });
+      return res.status(404).json({ message: "Recette non trouvée" });
     }
-    res.json({ message: "Supprésion reussi avec succes" });
+    res.json({ message: "Suppression réussie avec succès" });
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
