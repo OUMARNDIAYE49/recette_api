@@ -1,11 +1,13 @@
 import mysql from "mysql2/promise";
 
+
+// Configuration de la connexion à la base de données MySQL
 const connPool = mysql.createPool({
-  host: "localhost",
-  user: "root",
-  password: "Nd49523097",
-  database: "recette_api",
-  port: 3308,
+  host: "localhost", // Remplace par ton host si nécessaire
+  user: "root", // Remplace par ton utilisateur
+  password: "rELAX2024", // Remplace par ton mot de passe
+  database: "recette_api", // Remplace par le nom de ta base de données
+
 });
 
 connPool.getConnection().then(() => {
