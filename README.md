@@ -40,17 +40,15 @@ Suivez ces étapes pour configurer le projet sur votre machine locale :
   [
     {
       "id": 1,
-      "title": "Recette A",
-      "description": "Description de la recette A",
-      "ingredients": "Ingrédients de la recette A",
-      "instructions": "Instructions de la recette A"
+      "titre": "Spaguettue",
+      "ingredient": "Spagurttue viande Oignons pouvre_noir",
+      "type": "plat"
     },
     {
       "id": 2,
-      "title": "Recette B",
-      "description": "Description de la recette B",
-      "ingredients": "Ingrédients de la recette B",
-      "instructions": "Instructions de la recette B"
+      "titre": "Couscous",
+      "ingredient": "Viande OIgnons sel couscous",
+      "type": "plat"
     }
   ]
   ```
@@ -66,10 +64,9 @@ Suivez ces étapes pour configurer le projet sur votre machine locale :
   ```json
   {
     "id": 1,
-    "title": "Recette A",
-    "description": "Description de la recette A",
-    "ingredients": "Ingrédients de la recette A",
-    "instructions": "Instructions de la recette A"
+    "titre": "Spaguettue",
+    "ingredient": "Spagurttue viande Oignons pouvre_noir",
+    "type": "plat"
   }
   ```
 
@@ -81,10 +78,14 @@ Suivez ces étapes pour configurer le projet sur votre machine locale :
 - **Corps de la requête** (JSON) :
   ```json
   {
-    "title": "Nom de la recette",
-    "description": "Description de la recette",
-    "ingredients": "Liste des ingrédients",
-    "instructions": "Instructions de préparation"
+    "titre": "Spaguettue",
+    "ingredient": "Spagurttue viande Oignons pouvre_noir",
+    "type": "plat"
+  },
+  {
+    "titre": "Couscous",
+    "ingredient": "Viande OIgnons sel couscous",
+    "type": "plat"
   }
   ```
 
@@ -101,10 +102,9 @@ Suivez ces étapes pour configurer le projet sur votre machine locale :
 - **Corps de la requête** (JSON) :
   ```json
   {
-    "title": "Nouveau titre de la recette",
-    "description": "Nouvelle description de la recette",
-    "ingredients": "Nouveaux ingrédients",
-    "instructions": "Nouvelles instructions"
+    "titre": "Couscous",
+    "ingredient": "Viande OIgnons sel couscous",
+    "type": "plat"
   }
   ```
 
@@ -119,4 +119,5 @@ Suivez ces étapes pour configurer le projet sur votre machine locale :
 
 ## Auteur
 
-[Mohamed Abdallahi M'khaitir](https://github.com/Mohamed11abdallah) [Oumar Ndiaye](https://github.com/OUMARNDIAYE49/OumarNDIAYE)
+[Mohamed Abdallahi M'khaitir](https://github.com/Mohamed11abdallah)
+[Oumar Ndiaye](https://github.com/OUMARNDIAYE49/OumarNDIAYE)
