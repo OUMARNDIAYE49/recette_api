@@ -1,13 +1,12 @@
 import mysql from "mysql2/promise";
 
-
-// Configuration de la connexion à la base de données MySQL
+import dotenv from "dotenv";
+dotenv.config();
 const connPool = mysql.createPool({
-  host: "localhost", // Remplace par ton host si nécessaire
-  user: "root", // Remplace par ton utilisateur
-  password: "rELAX2024", // Remplace par ton mot de passe
-  database: "recette_api", // Remplace par le nom de ta base de données
-
+  host: process.env.DB_HOST,
+  user: "root",
+  password: "rELAX2024",
+  database: "recette_api",
 });
 
 connPool.getConnection().then(() => {
