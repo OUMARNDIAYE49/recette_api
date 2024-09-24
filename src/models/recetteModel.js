@@ -1,3 +1,4 @@
+//recetteModel
 import db from '../config/dbConfig.js';
 
 export const getAllRecettes = async () => {
