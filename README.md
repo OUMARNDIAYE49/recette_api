@@ -187,6 +187,25 @@ Assurez-vous que votre base de données est configurée correctement avant d'ex�
 npx jasmine
 ```
 
+- Cette commande lancera tous les tests définis dans les fichiers de test, notamment dans le répertoire `spec`.
+- Le fichier principal de tests pour les opérations sur les recettes est `spec/recetteModel.spec.js`.
+
+### Exemple de sortie lors de l'exécution des tests :
+
+```bash
+Jasmine started
+CONNECTED
+
+  Recette Model
+    √ should create a recette
+    √ should get all recettes
+    √ should get a recette by ID
+    √ should update a recette
+    √ should delete a recette
+
+Executed 5 of 5 specs SUCCESS in 0.13 sec.
+```
+
 ## Étapes pour construire et lancer le conteneur Docker
 
 - Assurez-vous d'avoir Docker et Docker Compose installés sur votre machine, ensuite :
