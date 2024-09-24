@@ -1,4 +1,4 @@
-import './helpers/jasmineHelper.js'; 
+import './helpers/jasmineHelper.js';
 import db from '../src/config/dbConfig.js';
 import {
   getAllRecettes,
@@ -6,16 +6,16 @@ import {
   createRecette,
   updateRecette,
   deleteRecette,
-} from '../src/models/recetteModel.js'; 
+} from '../src/models/recetteModel.js';
 
 describe('Recette Model', () => {
   beforeAll(async () => {
-    await db.query('DELETE FROM recettes'); 
+    await db.query('DELETE FROM recettes');
   });
 
   afterAll(async () => {
-    await db.query('DELETE FROM recettes'); 
-    await db.end(); 
+    await db.query('DELETE FROM recettes');
+    await db.end();
   });
 
   it('should create a recette', async () => {

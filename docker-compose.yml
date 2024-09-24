@@ -4,31 +4,30 @@ services:
   app:
     build: .
     container_name: recette_api_app
-    image: recette_api  
-    env_file: .env  
+    image: recette_api
+    env_file: .env
     ports:
-      - '4000:4000'  
+      - '4000:4000'
     volumes:
-      - .:/usr/src/server  
+      - .:/usr/src/server
     depends_on:
-      - db   
+      - db
 
   db:
-    image: mysql:8 
+    image: mysql:8
     container_name: recette_api_db
-    env_file: .env 
+    env_file: .env
 
-    restart: always  
+    restart: always
     volumes:
-      - db-config:/etc/mysql  
-      - db-data:/var/lib/mysql  
+      - db-config:/etc/mysql
+      - db-data:/var/lib/mysql
     ports:
-      - '3309:3306'  
+      - '3309:3306'
     environment:
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
       MYSQL_DATABASE: ${MYSQL_DATABASE}
-      
-    
+
 volumes:
-  db-config: 
-  db-data:  
+  db-config:
+  db-data:
