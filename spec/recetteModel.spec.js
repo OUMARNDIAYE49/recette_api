@@ -1,21 +1,21 @@
-import './helpers/jasmineHelper.js'; // Chemin d'accès correct
-import db from '../src/config/dbConfig.js'; // Chemin d'accès correct à la configuration de la base de données
+import './helpers/jasmineHelper.js'; 
+import db from '../src/config/dbConfig.js';
 import {
   getAllRecettes,
   getRecetteById,
   createRecette,
   updateRecette,
   deleteRecette,
-} from '../src/models/recetteModel.js'; // Chemin d'accès correct au modèle
+} from '../src/models/recetteModel.js'; 
 
 describe('Recette Model', () => {
   beforeAll(async () => {
-    await db.query('DELETE FROM recettes'); // Assurez-vous que la table est vide avant les tests
+    await db.query('DELETE FROM recettes'); 
   });
 
   afterAll(async () => {
-    await db.query('DELETE FROM recettes'); // Nettoyage après tous les tests si nécessaire
-    await db.end(); // Terminer la connexion à la base de données
+    await db.query('DELETE FROM recettes'); 
+    await db.end(); 
   });
 
   it('should create a recette', async () => {
@@ -39,7 +39,7 @@ describe('Recette Model', () => {
       'Ingrédients de Test',
       'plat'
     );
-    const recette = await getRecetteById(createdRecette.insertId); // Utiliser l'ID retourné
+    const recette = await getRecetteById(createdRecette.insertId);
     expect(recette).not.toBeNull();
     expect(recette).toEqual({
       id: createdRecette.insertId,
