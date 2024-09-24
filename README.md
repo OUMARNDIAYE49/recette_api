@@ -18,11 +18,37 @@ Suivez ces étapes pour configurer le projet sur votre machine locale :
 
 ```bash
     git clone https://github.com/Mohamed11abdallah/recette_api.git
+```
+
+2. Accédez au dossier du projet :
+
+```bash
     cd recette_api
+```
+
+3. Installez les dépendances :
+
+```bash
     npm install
 ```
 
+4. Configurer la base de données :
+
+- Assurez-vous que Mysql est en cours d'exécution sur votre machine locale.
+- Mettez les paramètres de connexion dans db.js.
+- Créez un fichier .env avec la configuration de votre base de données :
+
+```bash
+  DB_HOST=localhost
+  DB_USER=root
+  DB_PASSWORD=yourpassword
+  DB_NAME=recette_api
+
+```
+
 ## Utilisation
+
+Exécutez la commande suivante pour démarrer l'application, :
 
 ```bash
     npm start
@@ -35,8 +61,9 @@ Suivez ces étapes pour configurer le projet sur votre machine locale :
 - **URL** : `/recipes`
 - **Méthode HTTP** : `GET`
 - **Description** : Récupère toutes les recettes de la base de données.
-- **Réponse** :
-  ```json
+- **Exemple** : http://localhost:4000/api/recipes/
+- **Reponse** :
+  ```bash
   [
     {
       "id": 1,
@@ -58,10 +85,10 @@ Suivez ces étapes pour configurer le projet sur votre machine locale :
 - **URL** : `/recipes/:id`
 - **Méthode HTTP** : `GET`
 - **Description** : Récupère une recette spécifique à partir de son ID.
-- **Paramètres URL** :
-  - `:id` : L'ID de la recette à récupérer.
-- **Réponse en cas de succès** :
-  ```json
+- **Exemple URL** : http://localhost:4000/api/recipe/1
+- **Reponse** :
+
+  ```bash
   {
     "id": 1,
     "titre": "Spaguettue",
@@ -74,48 +101,130 @@ Suivez ces étapes pour configurer le projet sur votre machine locale :
 
 - **URL** : `/recipes`
 - **Méthode HTTP** : `POST`
-- **Description** : Crée une nouvelle recette en ajoutant un titre, une description, des ingrédients et des instructions.
+- **Description** : Crée une nouvelle recette.
+- **Exemple URL** : http://localhost:4000/api/recipes/
 - **Corps de la requête** (JSON) :
-  ```json
-  {
-    "titre": "Spaguettue",
-    "ingredient": "Spagurttue viande Oignons pouvre_noir",
-    "type": "plat"
-  },
-  {
-    "titre": "Couscous",
-    "ingredient": "Viande OIgnons sel couscous",
-    "type": "plat"
-  }
-  ```
+
+```bash
+{
+  "titre": "Spaguettue",
+  "ingredient": "Spagurttue viande Oignons pouvre_noir",
+  "type": "plat"
+},
+{
+  "titre": "Couscous",
+  "ingredient": "Viande OIgnons sel couscous",
+  "type": "plat"
+}
+```
+
+- **Reponse** :
+
+```bash
+{
+    "message": "Recette ajoutée avec succès"
+}
+```
 
 ### 4. Mettre à jour une recette
 
 - **URL** : `/recipes/:id`
 - **Méthode HTTP** : `PUT`
 - **Description** : Met à jour les informations d'une recette existante en fonction de son ID.
-
-- **Paramètres de l'URL** :
-
-  - `id` (entier) : L'ID de la recette à mettre à jour.
+- **Exemple URL** : http://localhost:4000/api/recipe/2
 
 - **Corps de la requête** (JSON) :
-  ```json
+
+  ```bash
   {
     "titre": "Couscous",
-    "ingredient": "Viande OIgnons sel couscous",
+    "ingredient": "Viande Oignons sel couscous",
     "type": "plat"
   }
   ```
+
+- **Reponse** :
+
+```bash
+{
+    "message": "Mise à jour réussie avec succès"
+}
+```
 
 ### 5. Supprimer une recette
 
 - **URL** : `/recipes/:id`
 - **Méthode HTTP** : `DELETE`
 - **Description** : Supprime une recette existante en fonction de son ID.
+- **Exemple URL** : http://localhost:4000/api/recipe/34
+- **Reponse** :
 
-- **Paramètres de l'URL** :
-  - `id` (entier) : L'ID de la recette à supprimer.
+```bash
+{
+    "message": "Suppression réussie avec succès"
+}
+```
+
+## Comment exécuter les tests unitaires
+
+Assurez-vous que votre base de données est configurée correctement avant d'exécuter les tests. Jasmine affichera un rapport des tests exécutés, ainsi que les résultats (succès ou échecs).
+
+```bash
+npx jasmine
+```
+
+## Étapes pour construire et lancer le conteneur Docker
+
+- Assurez-vous d'avoir Docker et Docker Compose installés sur votre machine, ensuite :
+
+1. Créer le fichier Dockerfile : Si ce n'est pas déjà fait, créez un fichier Dockerfile à la racine de votre projet avec les instructions nécessaires pour construire l'image de votre application.
+
+2. Créer le fichier docker-compose.yml : Si vous utilisez Docker Compose, assurez-vous d'avoir un fichier docker-compose.yml configuré.
+
+3. Construire l'image Docker : À la racine de votre projet, exécutez la commande suivante pour construire l'image Docker :
+
+- Pour construire l'image Docker de l'API, utilisez la commande suivante :
+
+```bash
+docker build -t recette_api .
+```
+
+- Tester l'Image Localement : Après avoir construit l'image, vous pouvez la tester localement en exécutant la commande suivante :
+
+```bash
+docker run -p 4000:4000 recette_api
+```
+
+- Lancer le Conteneur avec Docker Compose : Pour lancer le conteneur en utilisant docker-compose, exécutez cette commande :
+
+```bash
+docker-compose up --build
+```
+
+- Déploye l’image sur DockerHub : Connexion à DockerHub
+  si vous n'etes pas connecté, pour vous connecter à votre compte DockerHub, utilisez la commande suivante :
+
+```bash
+docker login
+```
+
+- Taguer et Pousser l'Image vers DockerHub : Taguez l'image Docker pour la préparer à être poussée sur DockerHub :
+
+```bash
+docker tag recette_api your-dockerhub-username/recette_api:latest
+```
+
+- Enfin, poussez l'image taguée vers DockerHub :
+
+```bash
+docker push your-dockerhub-username/recette_api:latest
+```
+
+Remplacer 'your-dockerhub-username' par votre nom d'utilisateur docker
+
+## Lien de l'Image sur DockerHub.
+
+https://hub.docker.com/r/oumarndiaye/recette_api/tags
 
 ## Auteur
 
