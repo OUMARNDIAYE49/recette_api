@@ -1,23 +1,23 @@
-import globals from "globals";
-import pluginJs from "@eslint/js";
-import pluginVue from "eslint-plugin-vue";
+import globals from 'globals';
+import pluginJs from '@eslint/js';
+import pluginVue from 'eslint-plugin-vue';
 
 export default [
   {
-    files: ["**/*.{js,mjs,cjs,vue}"],
+    files: ['**/*.{js,mjs,cjs,vue}'],
     languageOptions: {
       globals: {
         ...globals.browser,
-        jasmine: "readonly",
-        describe: "readonly",
-        beforeAll: "readonly",
-        afterAll: "readonly",
-        it: "readonly",
-        expect: "readonly",
-        process: "readonly",
+        jasmine: 'readonly',
+        describe: 'readonly',
+        beforeAll: 'readonly',
+        afterAll: 'readonly',
+        it: 'readonly',
+        expect: 'readonly',
+        process: 'readonly',
       },
     },
   },
   pluginJs.configs.recommended,
-  ...pluginVue.configs["flat/essential"],
+  ...pluginVue.configs['flat/essential'],
 ];
