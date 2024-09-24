@@ -5,9 +5,9 @@ dotenv.config();
 const connPool = mysql.createPool({
   host: process.env.DB_HOST,
   user: 'root',
-  password: 'Nd49523097',
+  password: '',
   database: 'recette_api',
-  port: 3308,
+ 
 });
 
 connPool.getConnection().then(() => {
