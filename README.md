@@ -257,7 +257,7 @@ Remplacer 'your-dockerhub-username' par votre nom d'utilisateur docker
 
 ## Lien de l'Image sur DockerHub.
 
-https://hub.docker.com/r/oumarndiaye/recette_api/tags
+https://hub.docker.com/r/mohamedabdallahi/recette_api/tags
 
 ## Auteur
 
