@@ -1,7 +1,7 @@
 
 FROM node:14
 
-WORKDIR /app
+WORKDIR /usr/src/server
 
 COPY package*.json ./
 

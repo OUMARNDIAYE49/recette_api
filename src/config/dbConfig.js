@@ -8,6 +8,9 @@ const connPool = mysql.createPool({
   user: process.env.DB_USER,
   password: process.env.DB_PASSWORD, // mot de passe
   database: process.env.DB_NAME,
+  waitForConnections: true,
+  connectionLimit: 100,
+  connectTimeout: 100000,
 });
 
 connPool
