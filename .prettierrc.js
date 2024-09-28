@@ -6,7 +6,8 @@ export default {
   printWidth: 80,
   trailingComma: 'es5',
   bracketSpacing: true,
-  jsxBracketSameLine: false,
+  // jsxBracketSameLine: false,
+
   arrowParens: 'avoid',
   endOfLine: 'lf',
 };

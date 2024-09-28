@@ -44,6 +44,9 @@ Suivez ces étapes pour configurer le projet sur votre machine locale :
   DB_PASSWORD=yourpassword
   DB_NAME=recette_api
 
+  MYSQL_ROOT_PASSWORD=rELAX2024
+  MYSQL_DATABASE=recette_api
+
 ```
 
 ## Utilisation
@@ -184,7 +187,7 @@ Nous avons préparé une collection de requêtes Postman pour faciliter les test
 Assurez-vous que votre base de données est configurée correctement avant d'exécuter les tests. Jasmine affichera un rapport des tests exécutés, ainsi que les résultats (succès ou échecs).
 
 ```bash
-npx jasmine
+npm test
 ```
 
 - Cette commande lancera tous les tests définis dans les fichiers de test, notamment dans le répertoire `spec`.
