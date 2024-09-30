@@ -39,13 +39,14 @@ Suivez ces étapes pour configurer le projet sur votre machine locale :
 - Créez un fichier .env avec la configuration de votre base de données :
 
 ```bash
-  DB_HOST=localhost
+  DB_HOST=db
   DB_USER=root
-  DB_PASSWORD=yourpassword
-  DB_NAME=recette_api
+  DB_PASSWORD=mots_de_passe
+  DB_NAME=nom_de_la_base_de_donnée
+  port=port_spécifier
 
-  MYSQL_ROOT_PASSWORD=rELAX2024
-  MYSQL_DATABASE=recette_api
+MYSQL_ROOT_PASSWORD=mots de passe
+MYSQL_DATABASE=nom_de_la_base_de_donnée
 
 ```
 
