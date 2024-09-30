@@ -6,8 +6,8 @@ import {
   createRecetteController,
   updateRecetteController,
   deleteRecetteController,
-} from '../controllers/recetteController.js';
-import { validateRecette } from '../validators/recetteValidator.js';
+} from '../controllers/RecetteController.js';
+import { validateRecette } from '../validators/RecetteValidator.js';
 
 const router = express.Router();
 

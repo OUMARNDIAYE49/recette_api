@@ -5,7 +5,7 @@ import {
   createRecette,
   updateRecette,
   deleteRecette,
-} from '../models/recetteModel.js';
+} from '../models/RecetteModel.js';
 
 export const getAllRecettesController = async (req, res) => {
   try {

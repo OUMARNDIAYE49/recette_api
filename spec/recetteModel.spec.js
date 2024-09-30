@@ -6,7 +6,7 @@ import {
   createRecette,
   updateRecette,
   deleteRecette,
-} from '../src/models/recetteModel.js';
+} from '../src/models/RecetteModel.js';
 
 describe('Recette Model', () => {
   beforeAll(async () => {
