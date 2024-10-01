@@ -7,6 +7,7 @@ import {
   updateRecette,
   deleteRecette,
 } from '../src/models/RecetteModel.js';
+// import { validateRecette } from '../src/validators.js'; // Supprimez cette ligne si non utilisée
 
 describe('Recette Model', () => {
   beforeAll(async () => {
@@ -25,6 +26,40 @@ describe('Recette Model', () => {
       'plat'
     );
     expect(recette.affectedRows).toBe(1);
+  });
+
+  it('should throw an error when creating a recette with invalid title', async () => {
+    try {
+      await createRecette('Test', 'Ingrédients de Test', 'plat');
+    } catch (error) {
+      expect(error.message).toBe(
+        'Le "titre" doit contenir entre 5 et 100 caractères.'
+      );
+    }
+  });
+
+  it('should throw an error when creating a recette with invalid ingredients', async () => {
+    try {
+      await createRecette('Titre de Test', 'Ingrédients', 'plat');
+    } catch (error) {
+      expect(error.message).toBe(
+        'Le champ "ingredients" doit contenir entre 10 et 500 caractères.'
+      );
+    }
+  });
+
+  it('should throw an error when creating a recette with invalid type', async () => {
+    try {
+      await createRecette(
+        'Titre de Test',
+        'Ingrédients de Test',
+        'invalidType'
+      );
+    } catch (error) {
+      expect(error.message).toBe(
+        'Le "type" doit être soit "entrée", "plat", ou "dessert".'
+      );
+    }
   });
 
   it('should get all recettes', async () => {
@@ -62,6 +97,26 @@ describe('Recette Model', () => {
       'plat'
     );
     expect(updatedRecette.affectedRows).toBe(1);
+  });
+
+  it('should throw an error when updating a recette with invalid title', async () => {
+    const createdRecette = await createRecette(
+      'Titre de Test',
+      'Ingrédients de Test',
+      'plat'
+    );
+    try {
+      await updateRecette(
+        createdRecette.insertId,
+        'T',
+        'Ingrédients Mis à Jour',
+        'plat'
+      );
+    } catch (error) {
+      expect(error.message).toBe(
+        'Le "titre" doit contenir entre 5 et 100 caractères.'
+      );
+    }
   });
 
   it('should delete a recette', async () => {

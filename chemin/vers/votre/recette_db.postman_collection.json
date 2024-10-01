@@ -1,7 +1,7 @@
 {
   "info": {
-    "_postman_id": "0642c1c3-8fe6-451e-af93-ede490d5c80f",
-    "name": "recette_api",
+    "_postman_id": "1b34ce10-3b36-486e-92ef-5b460eff0e3b",
+    "name": "recette_db",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
     "_exporter_id": "38116702"
   },
@@ -28,7 +28,7 @@
           "protocol": "http",
           "host": ["localhost"],
           "port": "4000",
-          "path": ["api", "recipe", "33"]
+          "path": ["api", "recipe", "2"]
         }
       },
       "response": []
@@ -87,11 +87,11 @@
           }
         },
         "url": {
-          "raw": "http://localhost:4000/api/recipe/33",
+          "raw": "http://localhost:4000/api/recipe/2",
           "protocol": "http",
           "host": ["localhost"],
           "port": "4000",
-          "path": ["api", "recipe", "33"]
+          "path": ["api", "recipe", "2"]
         }
       },
       "response": []
@@ -102,11 +102,11 @@
         "method": "DELETE",
         "header": [],
         "url": {
-          "raw": "http://localhost:4000/api/recipe/35",
+          "raw": "http://localhost:4000/api/recipe/3",
           "protocol": "http",
           "host": ["localhost"],
           "port": "4000",
-          "path": ["api", "recipe", "35"]
+          "path": ["api", "recipe", "3"]
         }
       },
       "response": []

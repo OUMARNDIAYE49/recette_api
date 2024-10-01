@@ -9,6 +9,7 @@ Avant de commencer, assurez-vous d'avoir installé les éléments suivants sur v
 - [Node.js](https://nodejs.org/) (v16 ou supérieure)
 - [MySQL](https://www.mysql.com/)
 - [Postman](https://www.postman.com/) (facultatif, pour tester l'API)
+- [Docker](https://www.docker.com/)
 
 ## Installation
 
@@ -35,8 +36,17 @@ Suivez ces étapes pour configurer le projet sur votre machine locale :
 4. Configurer la base de données :
 
 - Assurez-vous que Mysql est en cours d'exécution sur votre machine locale.
+- Ouvrez le terminal dans le dossier courant ensuite copiez la commande ci-dessous en remplaçant user_name par votre nom d'utilisateur
+
+```bash
+    mysql -u user_name -p recette_db < recette_db.sql
+```
+
 - Mettez les paramètres de connexion dans db.js.
-- Créez un fichier .env avec la configuration de votre base de données :
+- Créez un fichier .env et un autre fichier .env.test :
+- **.env** : Ce fichier sera utilisé par mysql en local
+- **.env.test** : Ce fichier sera utilisé par image mysql
+- Exemple : pour lancer en local
 
 ```bash
   DB_HOST=localhost
@@ -47,7 +57,19 @@ Suivez ces étapes pour configurer le projet sur votre machine locale :
 
 MYSQL_ROOT_PASSWORD=mots de passe
 MYSQL_DATABASE=nom_de_la_base_de_donnée
+```
 
+- Exemple : pour lancer par image mysql
+
+```bash
+  DB_HOST=db
+  DB_USER=root
+  DB_PASSWORD=mots_de_passe
+  DB_NAME=nom_de_la_base_de_donnée
+  port=port_spécifier
+
+MYSQL_ROOT_PASSWORD=mots de passe
+MYSQL_DATABASE=nom_de_la_base_de_donnée
 ```
 
 ## Utilisation
@@ -171,17 +193,15 @@ Exécutez la commande suivante pour démarrer l'application, :
 
 ## Collection de tests Postman
 
-### Importer la collection Postman
-
 Nous avons préparé une collection de requêtes Postman pour faciliter les tests de l'API. Vous pouvez l'importer dans Postman pour tester tous les endpoints CRUD (GET, POST, PUT, DELETE).
 
 #### Étapes pour importer la collection :
 
-1. Télécharger la collection Postman exportée en cliquant [ici](./chemin/vers/votre/collection.json).
+1. Télécharger la collection Postman exportée en cliquant [ici](./chemin/vers/votre/recette_db.postman_collection.json).
 2. Ouvrez Postman.
 3. Cliquez sur **Importer** en haut à gauche.
 4. Sélectionnez le fichier `.json` exporté et cliquez sur **Importer**.
-5. Vous verrez la collection `recette_api` dans votre interface Postman.
+5. Vous verrez la collection `recette_db` dans votre interface Postman.
 
 ## Comment exécuter les tests unitaires
 
@@ -198,78 +218,49 @@ Jasmine started
 CONNECTED
 
   Recette Model
-    √ should create a recette
-    √ should get all recettes
-    √ should get a recette by ID
-    √ should update a recette
     √ should delete a recette
+    √ should throw an error when creating a recette with invalid type
+    √ should throw an error when creating a recette with invalid ingredients
+    √ should get a recette by ID
+    √ should get all recettes
+    √ should throw an error when creating a recette with invalid title
+    √ should create a recette
+    √ should throw an error when updating a recette with invalid title
+    √ should update a recette
 
-Executed 5 of 5 specs SUCCESS in 0.13 sec.
+Executed 9 of 9 specs SUCCESS in 0.171 sec.
+Randomized with seed 38515.
 ```
 
 - Cette commande lancera tous les tests définis dans les fichiers de test, notamment dans le répertoire `spec`.
 - Le fichier principal de tests pour les opérations sur les recettes est `spec/recetteModel.spec.js`.
 
-## Comment formater le code
+## Comment formater et Analyser le code
+
+cette commande ci-dessous vous permet de formatter
 
 ```bash
 npm run format
 ```
 
-## Étapes pour construire et lancer le conteneur Docker
-
-- Assurez-vous d'avoir Docker et Docker Compose installés sur votre machine, ensuite :
-
-1. Créer le fichier Dockerfile : Si ce n'est pas déjà fait, créez un fichier Dockerfile à la racine de votre projet avec les instructions nécessaires pour construire l'image de votre application.
-
-2. Créer le fichier docker-compose.yml : Si vous utilisez Docker Compose, assurez-vous d'avoir un fichier docker-compose.yml configuré.
-
-3. Construire l'image Docker : À la racine de votre projet, exécutez la commande suivante pour construire l'image Docker :
-
-- Pour construire l'image Docker de l'API, utilisez la commande suivante :
+cette commande ci-dessous vous permet d'analyser si ya des incohérent et le corriger
 
 ```bash
-docker build -t recette_api .
+npm run lint
 ```
 
-- Tester l'Image Localement : Après avoir construit l'image, vous pouvez la tester localement en exécutant la commande suivante :
+## Containerisation Docker
+
+- Lien de l'Image sur DockerHub :
+
+https://hub.docker.com/r/mohamedabdallahi/api_recette/tags
+
+- Lancer les conteneurs Docker :
 
 ```bash
-docker run -p 4000:4000 recette_api
+docker-compose up -d
 ```
-
-- Lancer le Conteneur avec Docker Compose : Pour lancer le conteneur en utilisant docker-compose, exécutez cette commande :
-
-```bash
-docker-compose up --build
-```
-
-- Déploye l’image sur DockerHub : Connexion à DockerHub
-  si vous n'etes pas connecté, pour vous connecter à votre compte DockerHub, utilisez la commande suivante :
-
-```bash
-docker login
-```
-
-- Taguer et Pousser l'Image vers DockerHub : Taguez l'image Docker pour la préparer à être poussée sur DockerHub :
-
-```bash
-docker tag recette_api your-dockerhub-username/recette_api:latest
-```
-
-- Enfin, poussez l'image taguée vers DockerHub :
-
-```bash
-docker push your-dockerhub-username/recette_api:latest
-```
-
-Remplacer 'your-dockerhub-username' par votre nom d'utilisateur docker
-
-## Lien de l'Image sur DockerHub.
-
-https://hub.docker.com/r/mohamedabdallahi/recette_api/tags
 
 ## Auteur
 
 [Mohamed Abdallahi M'khaitir](https://github.com/Mohamed11abdallah)
-[Oumar Ndiaye](https://github.com/OUMARNDIAYE49/OumarNDIAYE)
