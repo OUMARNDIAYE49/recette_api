@@ -39,7 +39,7 @@ Suivez ces étapes pour configurer le projet sur votre machine locale :
 - Créez un fichier .env avec la configuration de votre base de données :
 
 ```bash
-  DB_HOST=db
+  DB_HOST=localhost
   DB_USER=root
   DB_PASSWORD=mots_de_passe
   DB_NAME=nom_de_la_base_de_donnée
@@ -191,9 +191,6 @@ Assurez-vous que votre base de données est configurée correctement avant d'ex�
 npm test
 ```
 
-- Cette commande lancera tous les tests définis dans les fichiers de test, notamment dans le répertoire `spec`.
-- Le fichier principal de tests pour les opérations sur les recettes est `spec/recetteModel.spec.js`.
-
 ### Exemple de sortie lors de l'exécution des tests :
 
 ```bash
@@ -208,6 +205,15 @@ CONNECTED
     √ should delete a recette
 
 Executed 5 of 5 specs SUCCESS in 0.13 sec.
+```
+
+- Cette commande lancera tous les tests définis dans les fichiers de test, notamment dans le répertoire `spec`.
+- Le fichier principal de tests pour les opérations sur les recettes est `spec/recetteModel.spec.js`.
+
+## Comment formater le code
+
+```bash
+npm run format
 ```
 
 ## Étapes pour construire et lancer le conteneur Docker
