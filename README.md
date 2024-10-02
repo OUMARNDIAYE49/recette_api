@@ -82,17 +82,35 @@ Exécutez la commande suivante pour démarrer l'application, :
 - **Reponse** :
   ```bash
   [
-    {
-      "id": 1,
-      "titre": "Spaguettue",
-      "ingredient": "Spagurttue viande Oignons pouvre_noir",
-      "type": "plat"
+   {
+        "id": 1,
+        "titre": "Tarte aux pommes",
+        "ingredient": "Pommes, Pte feuillete, Sucre, Beurre, Cannelle",
+        "type": "Dessert"
     },
     {
-      "id": 2,
-      "titre": "Couscous",
-      "ingredient": "Viande OIgnons sel couscous",
-      "type": "plat"
+        "id": 2,
+        "titre": "Spaghetti Carbonara",
+        "ingredient": "Spaghetti, Lardons, ufs, Parmesan, Crme frache",
+        "type": "Plat principal"
+    },
+    {
+        "id": 3,
+        "titre": "Salade Csar",
+        "ingredient": "Salade romaine, Poulet, Crotons, Parmesan, Sauce Csar",
+        "type": "Entre"
+    },
+    {
+        "id": 4,
+        "titre": "Soupe  loignon",
+        "ingredient": "Oignons, Bouillon de buf, Pain, Fromage rp",
+        "type": "Entre"
+    },
+    {
+        "id": 5,
+        "titre": "Brownie au chocolat",
+        "ingredient": "Chocolat, Beurre, Sucre, ufs, Farine",
+        "type": "Dessert"
     }
   ]
   ```
@@ -108,9 +126,9 @@ Exécutez la commande suivante pour démarrer l'application, :
   ```bash
   {
     "id": 1,
-    "titre": "Spaguettue",
-    "ingredient": "Spagurttue viande Oignons pouvre_noir",
-    "type": "plat"
+    "titre": "Tarte aux pommes",
+    "ingredient": "Pommes, Pte feuillete, Sucre, Beurre, Cannelle",
+    "type": "Dessert"
   }
   ```
 
@@ -124,15 +142,11 @@ Exécutez la commande suivante pour démarrer l'application, :
 
 ```bash
 {
-  "titre": "Spaguettue",
-  "ingredient": "Spagurttue viande Oignons pouvre_noir",
-  "type": "plat"
+   "titre": "Tarte aux pommes",
+   "ingredient": "Pommes, Pâte feuilletée, Sucre, Beurre, Cannelle",
+   "type": "dessert"
 },
-{
-  "titre": "Couscous",
-  "ingredient": "Viande OIgnons sel couscous",
-  "type": "plat"
-}
+
 ```
 
 - **Reponse** :
@@ -148,15 +162,15 @@ Exécutez la commande suivante pour démarrer l'application, :
 - **URL** : `/recipes/:id`
 - **Méthode HTTP** : `PUT`
 - **Description** : Met à jour les informations d'une recette existante en fonction de son ID.
-- **Exemple URL** : http://localhost:4000/api/recipe/2
+- **Exemple URL** : http://localhost:4000/api/recipe/4
 
 - **Corps de la requête** (JSON) :
 
   ```bash
   {
-    "titre": "Couscous",
-    "ingredient": "Viande Oignons sel couscous",
-    "type": "plat"
+    "titre": "Salade Fruit",
+    "ingredient": "Pommes, Pâte feuilletée, Sucre, Beurre, Cannelle",
+    "type": "dessert"
   }
   ```
 
@@ -173,7 +187,7 @@ Exécutez la commande suivante pour démarrer l'application, :
 - **URL** : `/recipes/:id`
 - **Méthode HTTP** : `DELETE`
 - **Description** : Supprime une recette existante en fonction de son ID.
-- **Exemple URL** : http://localhost:4000/api/recipe/34
+- **Exemple URL** : http://localhost:4000/api/recipe/5
 - **Reponse** :
 
 ```bash
