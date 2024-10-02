@@ -49,6 +49,19 @@ MYSQL_ROOT_PASSWORD=mots de passe
 MYSQL_DATABASE=nom_de_la_base_de_donnée
 
 ```
+- Si vous connecte avec image docker
+
+```bash
+  DB_HOST=db
+  DB_USER=root
+  DB_PASSWORD=mots_de_passe
+  DB_NAME=nom_de_la_base_de_donnée
+  port=port_spécifier
+
+MYSQL_ROOT_PASSWORD=mots de passe
+MYSQL_DATABASE=nom_de_la_base_de_donnée
+
+```
 
 ## Utilisation
 
@@ -177,7 +190,7 @@ Nous avons préparé une collection de requêtes Postman pour faciliter les test
 
 #### Étapes pour importer la collection :
 
-1. Télécharger la collection Postman exportée en cliquant [ici](./chemin/vers/votre/collection.json).
+1. Télécharger la collection Postman exportée en cliquant [ici](./src/collection.json).
 2. Ouvrez Postman.
 3. Cliquez sur **Importer** en haut à gauche.
 4. Sélectionnez le fichier `.json` exporté et cliquez sur **Importer**.
