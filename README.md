@@ -36,7 +36,7 @@ Suivez ces étapes pour configurer le projet sur votre machine locale :
 4. Configurer la base de données :
 
 - Assurez-vous que Mysql est en cours d'exécution sur votre machine locale.
-- Ouvrez le terminal dans le dossier courant ensuite copiez la commande ci-dessous en remplaçant user_name par votre nom d'utilisateur
+- Ouvrez le terminal dans le dossier courant ensuite copiez la commande ci-dessous pour importez la base de donnée, en remplaçant user_name par votre nom d'utilisateur
 
 ```bash
     mysql -u user_name -p recette_db < recette_db.sql
