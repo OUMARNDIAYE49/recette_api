@@ -249,9 +249,58 @@ cette commande ci-dessous vous permet d'analyser si ya des incohérent et le cor
 npm run lint
 ```
 
+## Étapes pour construire et lancer le conteneur Docker
+
+- Assurez-vous d'avoir Docker et Docker Compose installés sur votre machine, ensuite :
+
+1. Créer le fichier Dockerfile : Si ce n'est pas déjà fait, créez un fichier Dockerfile à la racine de votre projet avec les instructions nécessaires pour construire l'image de votre application.
+
+2. Créer le fichier docker-compose.yml : Si vous utilisez Docker Compose, assurez-vous d'avoir un fichier docker-compose.yml configuré.
+
+3. Construire l'image Docker : À la racine de votre projet, exécutez la commande suivante pour construire l'image Docker :
+
+- Pour construire l'image Docker de l'API, utilisez la commande suivante :
+
+```bash
+docker build -t recette_api .
+```
+
+- Tester l'Image Localement : Après avoir construit l'image, vous pouvez la tester localement en exécutant la commande suivante :
+
+```bash
+docker run -p 4000:4000 recette_api
+```
+
+- Lancer le Conteneur avec Docker Compose : Pour lancer le conteneur en utilisant docker-compose, exécutez cette commande :
+
+```bash
+docker-compose up --build
+```
+
+- Déploye l’image sur DockerHub : Connexion à DockerHub
+  si vous n'etes pas connecté, pour vous connecter à votre compte DockerHub, utilisez la commande suivante :
+
+```bash
+docker login
+```
+
+- Taguer et Pousser l'Image vers DockerHub : Taguez l'image Docker pour la préparer à être poussée sur DockerHub :
+
+```bash
+docker tag recette_api your-dockerhub-username/api_recette:latest
+```
+
+- Enfin, poussez l'image taguée vers DockerHub :
+
+```bash
+docker push your-dockerhub-username/api_recette:latest
+```
+
+Remplacer 'your-dockerhub-username' par votre nom d'utilisateur docker
+
 ## Containerisation Docker
 
-- Lien de l'Image sur DockerHub :
+- Lien de l'Image sur DockerHub:
 
 https://hub.docker.com/r/mohamedabdallahi/api_recette/tags
 
