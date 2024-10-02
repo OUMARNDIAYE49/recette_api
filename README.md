@@ -17,7 +17,7 @@ Suivez ces étapes pour configurer le projet sur votre machine locale :
 1. Clonez le repository :
 
 ```bash
-    git clone https://github.com/Mohamed11abdallah/recette_api.git
+    git clone https://github.com/OUMARNDIAYE49/recette_api.git
 ```
 
 2. Accédez au dossier du projet :
@@ -254,22 +254,21 @@ docker login
 - Taguer et Pousser l'Image vers DockerHub : Taguez l'image Docker pour la préparer à être poussée sur DockerHub :
 
 ```bash
-docker tag recette_api your-dockerhub-username/recette_api:latest
+docker tag recette_api your-dockerhub-username/recette_app_api
 ```
 
 - Enfin, poussez l'image taguée vers DockerHub :
 
 ```bash
-docker push your-dockerhub-username/recette_api:latest
+docker push your-dockerhub-username/recette_app_api
 ```
 
 Remplacer 'your-dockerhub-username' par votre nom d'utilisateur docker
 
 ## Lien de l'Image sur DockerHub.
 
-https://hub.docker.com/r/mohamedabdallahi/recette_api/tags
+https://hub.docker.com/r/oumarndiaye/recette_api/
 
 ## Auteur
 
-[Mohamed Abdallahi M'khaitir](https://github.com/Mohamed11abdallah)
 [Oumar Ndiaye](https://github.com/OUMARNDIAYE49/OumarNDIAYE)

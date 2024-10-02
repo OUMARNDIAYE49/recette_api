@@ -9,52 +9,68 @@ import {
 } from '../src/models/RecetteModel.js';
 
 describe('Recette Model', () => {
-  beforeAll(async () => {
-    await db.query('DELETE FROM recettes');
+  let createdRecetteIds = [];
+
+  afterEach(async () => {
+    for (const id of createdRecetteIds) {
+      await deleteRecette(id);
+    }
+    createdRecetteIds = [];
   });
 
   afterAll(async () => {
-    await db.query('DELETE FROM recettes');
     await db.end();
   });
 
   it('should create a recette', async () => {
+    const uniqueTitle = `Titre de Test ${Date.now()}`;
     const recette = await createRecette(
-      'Titre de Test',
+      uniqueTitle,
       'Ingrédients de Test',
       'plat'
     );
+    createdRecetteIds.push(recette.insertId);
     expect(recette.affectedRows).toBe(1);
   });
 
   it('should get all recettes', async () => {
-    await createRecette('Titre de Test', 'Ingrédients de Test', 'plat');
+    const uniqueTitle = `Titre de Test ${Date.now()}`;
+    const newRecette = await createRecette(
+      uniqueTitle,
+      'Ingrédients de Test',
+      'plat'
+    );
+    createdRecetteIds.push(newRecette.insertId);
     const recettes = await getAllRecettes();
     expect(recettes.length).toBeGreaterThan(0);
   });
 
   it('should get a recette by ID', async () => {
+    const uniqueTitle = `Titre de Test ${Date.now()}`;
     const createdRecette = await createRecette(
-      'Titre de Test',
+      uniqueTitle,
       'Ingrédients de Test',
       'plat'
     );
+    createdRecetteIds.push(createdRecette.insertId);
     const recette = await getRecetteById(createdRecette.insertId);
     expect(recette).not.toBeNull();
     expect(recette).toEqual({
       id: createdRecette.insertId,
-      titre: 'Titre de Test',
+      titre: uniqueTitle,
       ingredient: 'Ingrédients de Test',
       type: 'plat',
     });
   });
 
   it('should update a recette', async () => {
+    const uniqueTitle = `Titre de Test ${Date.now()}`;
     const createdRecette = await createRecette(
-      'Titre de Test',
+      uniqueTitle,
       'Ingrédients de Test',
       'plat'
     );
+    createdRecetteIds.push(createdRecette.insertId);
     const updatedRecette = await updateRecette(
       createdRecette.insertId,
       'Titre Mis à Jour',
@@ -65,8 +81,9 @@ describe('Recette Model', () => {
   });
 
   it('should delete a recette', async () => {
+    const uniqueTitle = `Titre de Test ${Date.now()}`;
     const createdRecette = await createRecette(
-      'Titre de Test',
+      uniqueTitle,
       'Ingrédients de Test',
       'plat'
     );

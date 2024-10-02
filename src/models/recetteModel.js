@@ -10,6 +10,12 @@ export const getRecetteById = async id => {
   const [results] = await db.query('SELECT * FROM recettes WHERE id = ?', [id]);
   return results.length > 0 ? results[0] : null;
 };
+export const getRecetteByTitle = async titre => {
+  const [rows] = await db.query('SELECT * FROM recettes WHERE titre = ?', [
+    titre,
+  ]);
+  return rows.length > 0 ? rows[0] : null;
+};
 
 export const createRecette = async (titre, ingredient, type) => {
   const [result] = await db.query(
