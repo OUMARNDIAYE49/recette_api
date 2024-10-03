@@ -204,7 +204,7 @@ Nous avons préparé une collection de requêtes Postman pour faciliter les test
 
 #### Étapes pour importer la collection :
 
-1. Télécharger la collection Postman exportée en cliquant [ici](./src/collection.json).
+1. Télécharger la collection Postman exportée en cliquant [ici](./collection.json).
 2. Ouvrez Postman.
 3. Cliquez sur **Importer** en haut à gauche.
 4. Sélectionnez le fichier `.json` exporté et cliquez sur **Importer**.
